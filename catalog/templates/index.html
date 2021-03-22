@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Local Library Home</h1>
+  <p>Welcome to LocalLibray, a website developed by <em>Mozilla Developer Network</em>!</p>
+  <ul>
+    <li><strong>Books:</strong> {{ num_books }}</li>
+    <li><strong>Copies:</strong> {{ num_instances }}</li>
+    <li><strong>Copies available:</strong> {{ num_instances_available }}</li>
+    <li><strong>Authors:</strong> {{ num_authors }}</li>
+    <li><strong>Num Genres has <code>i</code> character:</strong> {{ num_genres_i }}</li>
+    <li><strong>Num Book has <code>i</code> character:</strong> {{ num_books_i }}</li>
+  </ul>
+  <p>
+    You have visited this page {{ num_visits }}
+    time{% if num_visits > 1 %}s{% endif %}.
+  </p>
+{% endblock %}

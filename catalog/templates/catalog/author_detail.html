@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Authors: {{ author }}</h1>
+  <p class='text-muted'>
+    {{ author.date_of_birth }} - {{ author.date_of_death }}
+  </p>
+
+  {% if user.is_staff %}
+  <div>
+    <a href="{% url 'author-update' author.pk %}">
+      <button class='btn btn-primary'>Update</button>
+    </a>
+    <a href="{% url 'author-delete' author.pk %}">
+      <button class='btn btn-danger'>Delete</button>
+    </a>
+  </div>
+  {% endif %}
+
+  <h2>Books</h2>
+  <ul>
+    {% for book in author.book_set.all %}
+      <hr>
+      <h3>
+        <a href="{% url 'book-detail' book.pk %}">
+          {{ book.title }}
+        </a>
+         ({{ book.bookinstance_set.all.count }})
+      </h3>
+
+      <p class="text-muted">{{ book.summary }}</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
